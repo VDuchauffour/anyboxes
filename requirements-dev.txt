@@ -1,0 +1,10 @@
+pre-commit
+black
+isort
+ruff
+mypy
+pyright
+docformatter
+interrogate
+pytest
+pytest-cov
