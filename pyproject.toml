@@ -21,11 +21,11 @@ classifiers = [
   "Programming Language :: Python :: 3.11",
   "Intended Audience :: Developers",
   "Topic :: Scientific/Engineering :: Artificial Intelligence",
-  "Framework :: Pytest"
+  "Framework :: Pytest",
 ]
 requires-python = ">=3.8"
 dynamic = ["version"]
-dependencies = ["numpy>=1.21", 'typing_extensions; python_version<="3.9"']
+dependencies = ["numpy>=1.21"]
 
 [project.optional-dependencies]
 torch = ["torch"]
@@ -113,13 +113,27 @@ testpaths = ["tests"]
 
 [tool.coverage.run]
 branch = true
-omit = ["*docs*", "*stubs*", "*examples*", "*tests*", "src/anyboxes/_version.py", "src/anyboxes/implementations/torch/_typing.py"]
+omit = [
+  "*docs*",
+  "*stubs*",
+  "*examples*",
+  "*tests*",
+  "src/anyboxes/_version.py",
+  "src/anyboxes/implementations/torch/_typing.py",
+]
 
 [tool.coverage.report]
 fail_under = 80
 show_missing = true
 ignore_errors = true
-omit = ["*docs*", "*stubs*", "*examples*", "*tests*", "src/anyboxes/_version.py", "src/anyboxes/implementations/torch/_typing.py"]
+omit = [
+  "*docs*",
+  "*stubs*",
+  "*examples*",
+  "*tests*",
+  "src/anyboxes/_version.py",
+  "src/anyboxes/implementations/torch/_typing.py",
+]
 exclude_lines = [
   "pragma: no cover",
   "def __repr__",
