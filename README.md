@@ -58,7 +58,7 @@ git clone https://github.com/VDuchauffour/anyboxes
 In order to install all development dependencies, run the following command:
 
 ```shell
-pip install -e ".[dev]"
+pip install -e ".[all,dev]"
 ```
 
 To ensure that you follow the development workflow, please setup the pre-commit hooks:
