@@ -32,6 +32,18 @@ torch = ["torch"]
 jax = ["jax"]
 tensorflow = ["tensorflow"]
 all = ["anyboxes[torch]", "anyboxes[jax]", "anyboxes[tensorflow]"]
+dev = [
+  "pre-commit",
+  "black",
+  "isort",
+  "ruff",
+  "mypy",
+  "pyright",
+  "docformatter",
+  "interrogate",
+  "pytest",
+  "pytest-cov",
+]
 
 [project.urls]
 Homepage = "https://github.com/VDuchauffour/anyboxes"
