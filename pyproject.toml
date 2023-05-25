@@ -131,6 +131,7 @@ omit = [
   "*examples*",
   "*tests*",
   "src/anyboxes/_version.py",
+  "src/anyboxes/_errors.py",
   "src/anyboxes/implementations/torch/_typing.py",
 ]
 
@@ -144,6 +145,7 @@ omit = [
   "*examples*",
   "*tests*",
   "src/anyboxes/_version.py",
+  "src/anyboxes/_errors.py",
   "src/anyboxes/implementations/torch/_typing.py",
 ]
 exclude_lines = [
