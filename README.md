@@ -8,7 +8,7 @@ _Lightweight package for managing bounding boxes that works seamlessly with most
 | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | CI/CD   | [![CI Pipeline](https://github.com/VDuchauffour/anyboxes/actions/workflows/ci.yml/badge.svg)](https://github.com/VDuchauffour/anyboxes/actions/workflows/ci.yml) [![Release](https://github.com/VDuchauffour/anyboxes/actions/workflows/release.yml/badge.svg)](https://github.com/VDuchauffour/anyboxes/actions/workflows/release.yml) [![interrogate](.github/assets/badges/interrogate_badge.svg)](https://interrogate.readthedocs.io/en/latest/) [![codecov](https://codecov.io/gh/VDuchauffour/anyboxes/branch/main/graph/badge.svg)](https://codecov.io/gh/VDuchauffour/anyboxes)                                                                                     |
 | Meta    | [![linting - Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v0.json)](https://github.com/charliermarsh/ruff) [![code style - Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black) [![imports - isort](https://img.shields.io/badge/imports-isort-ef8336.svg)](https://github.com/pycqa/isort) [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit) [![License](https://img.shields.io/github/license/VDuchauffour/anyboxes?color=blueviolet)](https://spdx.org/licenses/) |
-| Package | [![PyPI - Version](https://img.shields.io/pypi/v/anyboxes.svg?logo=pypi&label=PyPI&logoColor=gold)](https://pypi.org/project/anyboxes/) [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/anyboxes.svg?logo=python&label=Python&logoColor=gold)](https://pypi.org/project/anyboxes/)                                                                                                                                                                                                                                                                                                                                                                         |
+| Package | [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/anyboxes.svg?logo=python&label=Python&logoColor=gold)](https://pypi.org/project/anyboxes/) [![PyPI - Version](https://img.shields.io/pypi/v/anyboxes.svg?logo=pypi&label=PyPI&logoColor=gold)](https://pypi.org/project/anyboxes/)                                                                                                                                                                                                                                                                                                                                                                         |
 
 </div>
 
@@ -69,7 +69,7 @@ pre-commit install
 
 ## 🧭 Roadmap
 
-- [ ] Implementation
+- [ ] Implementations
   - [x] PyTorch
   - [ ] Numpy
   - [ ] JAX
