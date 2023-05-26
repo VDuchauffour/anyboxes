@@ -57,7 +57,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -U pip
-          pip install ".[all,dev]"
+          pip install -e ".[all,dev]"
       - name: Run tests
         run: |
           pytest -vv
