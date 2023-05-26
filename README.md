@@ -66,3 +66,12 @@ To ensure that you follow the development workflow, please setup the pre-commit 
 ```shell
 pre-commit install
 ```
+
+## 🧭 Roadmap
+
+- [ ] Implementation
+  - [x] PyTorch
+  - [ ] Numpy
+  - [ ] JAX
+  - [ ] Tensorflow
+- [ ] Dispatch implementation using a metaclass
