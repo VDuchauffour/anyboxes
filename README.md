@@ -36,16 +36,49 @@ pip install git+https://github.com/VDuchauffour/anyboxes
 
 In a nutshell, the common workflow involve 3 stages:
 
-- Instantiate a `Boxes` object with one of the following classmethod: `from_top_left_corner`, `from_bottom_left_corner`, `from_two_corners`, `from_center`
-- Apply a transformation with a `to` inplace method: `to_top_left_corner`, `to_bottom_left_corner`, `to_two_corners`, `to_center`
-- Retrieve the modified data with one of the property: `as_dict`, `as_tuple`, `as_array`, `as_numpy`, `as_tensor`
+<div align="center">
+
+|                                                                 |
+| :-------------------------------------------------------------: |
+| Instantiate a `Boxes` object with one of the `from` classmethod |
+|        Apply a transformation with a `to` inplace method        |
+|    Retrieve the modified data with one of the `as` property     |
+
+</div>
+<br />
+
+Every `Boxes` class contains the following methods:
+
+- `from` classmethods: `from_top_left_corner`, `from_bottom_left_corner`, `from_two_corners`, `from_center`
+- `to` inplace methods: `to_top_left_corner`, `to_bottom_left_corner`, `to_two_corners`, `to_center`
+- `as` properties: `as_dict`, `as_tuple`, `as_array`, `as_numpy`, `as_tensor`
+
+<br />
 
 To be more specific, when a `Boxes` is instantiated, the following attribute are created:
 
-- `corners_coordinates` attribute (a tuple from top to bottom and from left to right).
-- `center_coordinates` attribute
-- `shape` attribute (width and height)
-- `origin` attribute (which can be equal to `top-left` or `bottom-left`, modify this attribute will rearrange the coordinates)
+<div align="center">
+
+|       Attribute       |                                Purpose                                 |
+| :-------------------: | :--------------------------------------------------------------------: |
+| `corners_coordinates` |    a tuple of coordinates from top to bottom and from left to right    |
+| `center_coordinates`  |               a object that contains center coordinates                |
+|        `size`         |           a object that contains width and height attributes           |
+|       `origin`        | origin of the coordinates, can be equal to `top-left` or `bottom-left` |
+
+</div>
+
+### Example
+
+```python
+from anyboxes import TorchBoxes
+import torch
+
+detections = torch.randint(0, 1000, (10, 4))
+
+boxes = TorchBoxes.from_bottom_left_corner(detections)
+boxes.to_center().as_tensor
+```
 
 ## ⛏️ Development
 
