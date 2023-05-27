@@ -61,10 +61,10 @@ To be more specific, when a `Boxes` is instantiated, the following attribute are
 
 |       Attribute       |                                Purpose                                 |
 | :-------------------: | :--------------------------------------------------------------------: |
-| `corners_coordinates` |    a tuple of coordinates from top to bottom and from left to right    |
-| `center_coordinates`  |               a object that contains center coordinates                |
-|        `size`         |           a object that contains width and height attributes           |
-|       `origin`        | origin of the coordinates, can be equal to `top-left` or `bottom-left` |
+| `corners_coordinates` |    A tuple of coordinates from top to bottom and from left to right    |
+| `center_coordinates`  |               A object that contains center coordinates                |
+|        `size`         |           A object that contains width and height attributes           |
+|       `origin`        | Origin of the coordinates, can be equal to `top-left` or `bottom-left` |
 
 </div>
 
@@ -77,7 +77,8 @@ import torch
 detections = torch.randint(0, 1000, (10, 4))
 
 boxes = TorchBoxes.from_bottom_left_corner(detections)
-boxes.to_center().as_tensor
+boxes = boxes.to_center()
+boxes.as_tensor
 ```
 
 ## ⛏️ Development
