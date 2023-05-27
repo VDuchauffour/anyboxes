@@ -86,7 +86,7 @@ ignore = [
   "D401",
   "E501",
 ]
-extend-exclude = ["tests/*.py", "setup.py"]
+extend-exclude = ["examples/*.py", "test/*.py", "tests/*.py", "setup.py"]
 target-version = "py38"
 force-exclude = true
 
@@ -116,7 +116,7 @@ fail-under = 80
 ignore-module = true
 ignore-nested-functions = true
 ignore-private = true
-exclude = ["tests", "setup.py"]
+exclude = ["examples", "docs", "test", "tests", "setup.py"]
 
 [tool.pytest.ini_options]
 minversion = "6.0"
