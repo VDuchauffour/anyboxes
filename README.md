@@ -34,24 +34,26 @@ pip install git+https://github.com/VDuchauffour/anyboxes
 
 ## ⚡ Usage
 
-In a nutshell, the common workflow involve 3 stages:
+### Example
 
-<div align="center">
+```python
+from anyboxes import TorchBoxes
+import torch
 
-|                                                                 |
-| :-------------------------------------------------------------: |
-| Instantiate a `Boxes` object with one of the `from` classmethod |
-|        Apply a transformation with a `to` inplace method        |
-|    Retrieve the modified data with one of the `as` property     |
+detections = torch.randint(0, 1000, (10, 4))
 
-</div>
-<br />
+boxes = TorchBoxes.from_bottom_left_corner(detections)
+boxes = boxes.to_center()
+boxes.as_tensor
+```
 
-Every `Boxes` class contains the following methods:
+In a nutshell, using a `Boxes` involve 3 stages:
 
-- `from` classmethods: `from_top_left_corner`, `from_bottom_left_corner`, `from_two_corners`, `from_center`
-- `to` inplace methods: `to_top_left_corner`, `to_bottom_left_corner`, `to_two_corners`, `to_center`
-- `as` properties: `as_dict`, `as_tuple`, `as_array`, `as_numpy`, `as_tensor`
+| **#** |                              Stage                               |                               Methods that can be used                               |
+| :---: | :--------------------------------------------------------------: | :----------------------------------------------------------------------------------: |
+|   1   | Instantiate a `Boxes` object with one of the `from` classmethods | `from_top_left_corner`, `from_bottom_left_corner`, `from_two_corners`, `from_center` |
+|   2   |        Apply a transformation with a `to` inplace methods        |     `to_top_left_corner`, `to_bottom_left_corner`, `to_two_corners`, `to_center`     |
+|   3   |    Retrieve the modified data with one of the `as` properties    |              `as_dict`, `as_tuple`, `as_array`, `as_numpy`, `as_tensor`              |
 
 <br />
 
@@ -67,19 +69,6 @@ To be more specific, when a `Boxes` is instantiated, the following attribute are
 |       `origin`        | Origin of the coordinates, can be equal to `top-left` or `bottom-left` |
 
 </div>
-
-### Example
-
-```python
-from anyboxes import TorchBoxes
-import torch
-
-detections = torch.randint(0, 1000, (10, 4))
-
-boxes = TorchBoxes.from_bottom_left_corner(detections)
-boxes = boxes.to_center()
-boxes.as_tensor
-```
 
 ## ⛏️ Development
 
