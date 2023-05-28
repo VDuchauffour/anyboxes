@@ -10,7 +10,7 @@ from anyboxes.implementations.origin import Origin
 from .coordinates import Coordinates, Size
 
 if TYPE_CHECKING:
-    from jaxtyping import Float
+    from jaxtyping import Shaped
     from numpy.typing import NDArray
 
     from ._typing import (
@@ -58,7 +58,7 @@ class TorchBoxes:
         self.device = device
 
     @property
-    def dimensions(self) -> Float[torch.Tensor, "5"]:  # noqa
+    def dimensions(self) -> Shaped[torch.Tensor, "5"]:  # noqa
         """Return dimensions of FourCornersCoordinates and center_coordinates.
 
         Returns:
@@ -119,7 +119,7 @@ class TorchBoxes:
 
     @staticmethod
     def __recast_tensor(
-        tensor: Float[torch.Tensor, "batch 1"]  # noqa: F722
+        tensor: Shaped[torch.Tensor, "batch 1"]  # noqa: F722
     ) -> CoordTensorType:
         """Recast torch.Tensor to 1 dimension in order to handle batch size
         cases.
