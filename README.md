@@ -53,7 +53,7 @@ In a nutshell, using a `Boxes` involve 3 stages:
 | :---: | :--------------------------------------------------------------: | :----------------------------------------------------------------------------------: |
 |   1   | Instantiate a `Boxes` object with one of the `from` classmethods | `from_top_left_corner`, `from_bottom_left_corner`, `from_two_corners`, `from_center` |
 |   2   |        Apply a transformation with a `to` inplace methods        |     `to_top_left_corner`, `to_bottom_left_corner`, `to_two_corners`, `to_center`     |
-|   3   |    Retrieve the modified data with one of the `as` properties    |              `as_dict`, `as_tuple`, `as_array`, `as_numpy`, `as_tensor`              |
+|   3   |    Retrieve the modified data with one of the `as` properties    |      `as_dict`, `as_tuple`, `as_numpy`, `as_array`, `as_tf_tensor`, `as_tensor`      |
 
 <br />
 

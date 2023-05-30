@@ -4,14 +4,15 @@ from typing import TYPE_CHECKING
 
 import torch
 
-from anyboxes._errors import MissingToMethodError
+from anyboxes._errors import MissingToMethodError, OptionalDependencyImportError
 from anyboxes.implementations.origin import Origin
 
 from .coordinates import Coordinates, Size
 
 if TYPE_CHECKING:
-    from jaxtyping import Shaped
+    from jaxtyping import Array, Shaped
     from numpy.typing import NDArray
+    from tensorflow import Tensor
 
     from ._typing import (
         BoxesTensorType,
@@ -559,7 +560,7 @@ class TorchBoxes:
         return masks.to(torch.int)
 
     @property
-    def as_dict(self) -> dict[str, dict[str, CoordTensorType]]:
+    def as_dict(self) -> dict[str, dict[str, list[int | float]]]:
         """Return boxes' data as dictionnary.
 
         Returns:
@@ -582,26 +583,29 @@ class TorchBoxes:
             tuple[CoordTensorType]: tuple containing coordinates and size of Boxes.
         """
         return (
-            self.corners_coordinates[0].x,
-            self.corners_coordinates[0].y,
-            self.corners_coordinates[1].x,
-            self.corners_coordinates[1].y,
-            self.corners_coordinates[2].x,
-            self.corners_coordinates[2].y,
-            self.corners_coordinates[3].x,
-            self.corners_coordinates[3].y,
-            self.center_coordinates.x,
-            self.center_coordinates.y,
-            self.size.w,
-            self.size.h,
+            self.corners_coordinates[0].x.tolist(),
+            self.corners_coordinates[0].y.tolist(),
+            self.corners_coordinates[1].x.tolist(),
+            self.corners_coordinates[1].y.tolist(),
+            self.corners_coordinates[2].x.tolist(),
+            self.corners_coordinates[2].y.tolist(),
+            self.corners_coordinates[3].x.tolist(),
+            self.corners_coordinates[3].y.tolist(),
+            self.center_coordinates.x.tolist(),
+            self.center_coordinates.y.tolist(),
+            self.size.w.tolist(),
+            self.size.h.tolist(),
         )
 
     @property
     def as_numpy(self) -> NDArray:
         """Return boxes' data as `np.ndarray`.
 
+        Raises:
+            MissingToMethodError: Raised if no `to` methods has been run.
+
         Returns:
-            np.ndarray: Return boxes as Numpy array.
+            NDArray: Return boxes as Numpy array.
         """
         if hasattr(self, "boxes_"):
             return self.boxes_.to(torch.float).detach().cpu().numpy()
@@ -609,11 +613,56 @@ class TorchBoxes:
             raise MissingToMethodError
 
     @property
+    def as_array(self) -> Array:
+        """Return boxes' data as JAX's `Array`.
+
+        Raises:
+            OptionalDependencyImportError: Raised if JAX is missing.
+            MissingToMethodError: Raised if no `to` methods has been run.
+
+        Returns:
+            Array: Return boxes as JAX array.
+        """
+        if hasattr(self, "boxes_"):
+            try:
+                import jax.numpy as jnp
+            except ModuleNotFoundError:
+                raise OptionalDependencyImportError("jax")
+
+            return jnp.array(self.boxes_.to(torch.float).detach().cpu())
+        else:
+            raise MissingToMethodError
+
+    @property
+    def as_tf_tensor(self) -> Tensor:
+        """Return boxes' data as Tensorflow's `Tensor`.
+
+        Raises:
+            OptionalDependencyImportError: Raised if Tensorflow is missing.
+            MissingToMethodError: Raised if no `to` methods has been run.
+
+        Returns:
+            Array: Return boxes as Tensorflow tensor.
+        """
+        if hasattr(self, "boxes_"):
+            try:
+                import tensorflow as tf
+            except ModuleNotFoundError:
+                raise OptionalDependencyImportError("tensorflow")
+
+            return tf.convert_to_tensor(self.boxes_.to(torch.float).detach().cpu())
+        else:
+            raise MissingToMethodError
+
+    @property
     def as_tensor(self) -> BoxesTensorType:
         """Return boxes' data as `torch.Tensor`.
 
+        Raises:
+            MissingToMethodError: Raised if no `to` methods has been run.
+
         Returns:
-            BboxesTensor: Return bboxes as Torch tensor.
+            BboxesTensor: Return bboxes as PyTorch tensor.
         """
         if hasattr(self, "boxes_"):
             return self.boxes_.to(torch.float)
