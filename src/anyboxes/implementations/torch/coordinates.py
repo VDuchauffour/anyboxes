@@ -23,13 +23,13 @@ class Coordinates:
         self.y = y.to(device)
         self.batch_size: int = len(x)
 
-    def to_dict(self) -> dict[str, CoordTensorType]:
+    def to_dict(self) -> dict[str, list[int | float]]:
         """Return x and y as dict.
 
         Returns:
             dict[str, CoordTensorType]: dict containing coordinates tensors.
         """
-        return {"x": self.x, "y": self.y}
+        return {"x": self.x.tolist(), "y": self.y.tolist()}
 
 
 class Size:
@@ -47,10 +47,10 @@ class Size:
         self.h = h.to(device)
         self.batch_size: int = len(w)
 
-    def to_dict(self) -> dict[str, CoordTensorType]:
+    def to_dict(self) -> dict[str, list[int | float]]:
         """Return w and h as dict.
 
         Returns:
             dict[str, CoordTensorType]: dict containing size tensors.
         """
-        return {"w": self.w, "h": self.h}
+        return {"w": self.w.tolist(), "h": self.h.tolist()}
