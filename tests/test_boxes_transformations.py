@@ -106,7 +106,7 @@ def test_from_two_corners_to_two_corners(two_corners_tensor):
 
 
 @pytest.mark.usefixtures("center_tensor", "squared_center_tensor")
-def test_from_center_squared_to_center(center_tensor, squared_center_tensor):
+def test_from_center_square_to_squared_center(center_tensor, squared_center_tensor):
     b = TorchBoxes.from_center(center_tensor)
     assert torch.equal(b.square().to_center().as_tensor, squared_center_tensor)
 
