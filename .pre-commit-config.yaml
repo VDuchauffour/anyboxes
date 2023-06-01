@@ -35,7 +35,7 @@ repos:
           - mdformat-shfmt
   # An extremely fast Python linter, written in Rust
   - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: "v0.0.263"
+    rev: "v0.0.270"
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]
@@ -52,7 +52,7 @@ repos:
       - id: isort
   # Formats docstrings to follow PEP 257
   - repo: https://github.com/PyCQA/docformatter
-    rev: v1.6.4
+    rev: v1.7.1
     hooks:
       - id: docformatter
         additional_dependencies: [tomli]
